@@ -32,13 +32,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="26dp"
-        android:text="settings" />
+        android:text="设置" />
 
     <TextView
         style="@style/WpSectionHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GAMERTAG" />
+        android:text="玩家代号" />
 
     <EditText
         android:id="@+id/gamerTagInput"
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="ACCENT COLOUR" />
+        android:text="强调色" />
 
     <TextView
         android:layout_width="match_parent"
@@ -69,7 +69,7 @@
         android:fontFamily="sans-serif"
         android:textColor="@color/wp_subtle"
         android:textSize="13sp"
-        android:text="applied to the shell immediately, and to games the next time they launch." />
+        android:text="立即应用到界面。" />
 
     <GridLayout
         android:id="@+id/accentGrid"
@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="STORAGE" />
+        android:text="存储" />
 
     <TextView
         android:id="@+id/storagePathText"
@@ -103,7 +103,7 @@
         android:textColor="@color/wp_subtle"
         android:textSize="13sp"
         android:lineSpacingExtra="3dp"
-        android:text="games are installed here from the .xap you pick. no folder on this device is ever scanned automatically." />
+        android:text="游戏通过你选择的 .xap 文件安装在此处。设备上的任何文件夹都不会被自动扫描。" />
 
   </LinearLayout>
 </ScrollView>

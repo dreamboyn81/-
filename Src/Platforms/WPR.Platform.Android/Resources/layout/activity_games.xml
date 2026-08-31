@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:text="games" />
+        android:text="游戏" />
   </LinearLayout>
 
   <FrameLayout
@@ -64,7 +64,7 @@
           android:fontFamily="sans-serif-light"
           android:textColor="@color/wp_foreground"
           android:textSize="26sp"
-          android:text="no games yet" />
+          android:text="暂无游戏" />
 
       <TextView
           android:layout_width="match_parent"
@@ -74,7 +74,7 @@
           android:textColor="@color/wp_subtle"
           android:textSize="15sp"
           android:lineSpacingExtra="4dp"
-          android:text="tap add below and pick a .xap from your device. nothing is scanned automatically — you choose exactly what gets installed." />
+          android:text="点击下方的“添加游戏”按钮，从设备中选择一个 .xap 文件。系统不会自动扫描任何内容 - 由你决定具体安装什么。" />
     </LinearLayout>
   </FrameLayout>
 

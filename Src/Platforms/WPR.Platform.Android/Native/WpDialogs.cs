@@ -17,7 +17,7 @@ namespace WPR.Platform.Android.Native
     internal static class WpDialogs
     {
         public static Task<bool> ConfirmAsync(Activity host, string title, string message,
-            string yes = "yes", string no = "no")
+            string yes = "是", string no = "否")
         {
             var source = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
 
@@ -80,7 +80,7 @@ namespace WPR.Platform.Android.Native
                 new AlertDialog.Builder(host)!
                     .SetTitle(title)!
                     .SetMessage(message)!
-                    .SetPositiveButton("OK", (IDialogInterfaceOnClickListener?)null)!
+                    .SetPositiveButton("确定", (IDialogInterfaceOnClickListener?)null)!
                     .Show();
             });
         }

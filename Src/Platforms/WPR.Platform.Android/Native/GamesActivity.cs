@@ -143,7 +143,7 @@ namespace WPR.Platform.Android.Native
         /// </summary>
         private async Task ShowContextSheetAsync(GameEntry entry)
         {
-            string[] actions = { "play", "achievements", "info", "re-patch", "uninstall" };
+            string[] actions = { "启动", "成就", "修补", "卸载" };
             int choice = await WpDialogs.ChooseAsync(this, entry.Name, actions);
 
             // Dismissal returns -1. Dispatching on the label rather than the index keeps
@@ -152,29 +152,29 @@ namespace WPR.Platform.Android.Native
 
             switch (actions[choice])
             {
-                case "play":
+                case "启动":
                     GameLauncher.Launch(this, entry.Model);
                     break;
 
-                case "achievements":
+                case "成就":
                     Intent intent = new Intent(this, typeof(AchievementsActivity));
                     intent.PutExtra(AchievementsActivity.ExtraProductId, entry.ProductId);
                     intent.PutExtra(AchievementsActivity.ExtraGameName, entry.Name);
                     StartActivity(intent);
                     break;
 
-                case "info":
+                case "信息":
                     Intent info = new Intent(this, typeof(GameInfoActivity));
                     info.PutExtra(GameInfoActivity.ExtraProductId, entry.ProductId);
                     info.PutExtra(GameInfoActivity.ExtraGameName, entry.Name);
                     StartActivity(info);
                     break;
 
-                case "re-patch":
+                case "修补":
                     await RepatchAsync(entry);
                     break;
 
-                case "uninstall":
+                case "卸载":
                     await UninstallAsync(entry);
                     break;
             }
@@ -187,7 +187,7 @@ namespace WPR.Platform.Android.Native
         /// </summary>
         private async Task RepatchAsync(GameEntry entry)
         {
-            WpProgressDialog progress = WpProgressDialog.Show(this, entry.Name, "re-patching assemblies…", indeterminate: false);
+            WpProgressDialog progress = WpProgressDialog.Show(this, entry.Name, "正在重新修补程序集…", indeterminate: false);
 
             try
             {
@@ -224,8 +224,8 @@ namespace WPR.Platform.Android.Native
         {
             bool confirmed = await WpDialogs.ConfirmAsync(
                 this,
-                "uninstall",
-                $"remove {entry.Name} and everything it has saved on this device?");
+                "卸载",
+                $"确定要移除 {entry.Name} 及其在此设备上保存的所有数据吗？");
 
             if (!confirmed) return;
 
@@ -236,7 +236,7 @@ namespace WPR.Platform.Android.Native
             catch (Exception ex)
             {
                 Log.Error(LogCategory.AppList, $"Uninstall failed for {entry.Name}:\n{ex}");
-                WpDialogs.Error(this, "uninstall failed", ex.Message);
+                WpDialogs.Error(this, "卸载失败", ex.Message);
             }
 
             Reload();

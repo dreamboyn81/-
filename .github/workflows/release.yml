@@ -1,8 +1,4 @@
-# Builds the two distributable artifacts and (optionally) publishes them as a
-# GitHub Release:
-#
-#   * Windows - self-contained x64 payload wrapped in an Inno Setup installer
-#   * Android - signed APK (net8.0-android34.0 / API 34)
+# Builds the Android signed APK and (optionally) publishes it as a GitHub Release.
 #
 # Manual dispatch only: Actions -> Release -> Run workflow, then type the version.
 name: Release
@@ -36,7 +32,7 @@ concurrency:
 
 jobs:
   # -------------------------------------------------------------------------
-  # Fail fast on a malformed version before burning ~20 minutes of runner time.
+  # Fail fast on a malformed version before burning runner time.
   # -------------------------------------------------------------------------
   validate:
     runs-on: ubuntu-latest
@@ -66,87 +62,8 @@ jobs:
           echo "Building $VERSION (Android versionCode $CODE)" >> "$GITHUB_STEP_SUMMARY"
 
   # -------------------------------------------------------------------------
-  # Windows: publish self-contained, then wrap in an Inno Setup installer.
-  # -------------------------------------------------------------------------
-  windows:
-    needs: validate
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-dotnet@v4
-        with:
-          global-json-file: global.json
-
-      # -p:SolutionDir is required from the CLI: Src/Backends/FNA.Platform's
-      # Directory.Build.props shadows the Src/ one that defines it (nearest-wins,
-      # no parent import), so FNA.Core can't resolve WPR.Framework.Xna without it.
-      # Trailing forward slash - a trailing backslash would escape the quote.
-      - name: Publish (self-contained win-x64)
-        shell: pwsh
-        run: >
-          dotnet publish Src/Platforms/WPR.Platform.Windows/WPR.Platform.Windows.csproj
-          -c Release
-          -f net8.0-windows10.0.17763.0
-          -r win-x64
-          --self-contained true
-          -o publish/desktop
-          -p:SolutionDir=${{ github.workspace }}/Src/
-          -p:Version=${{ needs.validate.outputs.version }}
-          -maxcpucount:1
-          -nodeReuse:false
-          --nologo
-
-      # The csproj's "Copy pre-made database" target is AfterTargets="Build" and
-      # writes to $(OutputPath), so it never reaches the publish folder.
-      #
-      # Source path moved 2026-08-30: Src/Database -> Src/Core/WPR.Database/Data when the
-      # database was centralised into its own project. The assertions below exist because a
-      # stale path here is the difference between a working installer and one that ships with
-      # no catalogue at all — the app would install and then fail on first run.
-      - name: Stage pre-made database
-        shell: pwsh
-        run: |
-          $src = "Src/Core/WPR.Database/Data"
-          if (-not (Test-Path $src)) { throw "seed database source '$src' not found - has it moved again?" }
-
-          New-Item -ItemType Directory -Force publish/desktop/Database | Out-Null
-          Copy-Item "$src/*" publish/desktop/Database -Recurse -Force
-
-          foreach ($f in @("applications.db", "achievements.db")) {
-            if (-not (Test-Path "publish/desktop/Database/$f")) { throw "staged payload is missing $f" }
-          }
-          $catalogues = (Get-ChildItem publish/desktop/Database/Achievements -Directory -ErrorAction SilentlyContinue).Count
-          if ($catalogues -lt 1) { throw "staged payload has no achievement catalogues" }
-          Write-Host "Staged both databases and $catalogues achievement catalogues."
-
-          if (-not (Test-Path publish/desktop/WPR.Platform.Windows.exe)) {
-            throw "publish succeeded but WPR.Platform.Windows.exe is missing"
-          }
-
-      - name: Install Inno Setup
-        run: choco install innosetup -y --no-progress
-
-      - name: Build installer
-        shell: pwsh
-        run: |
-          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" `
-            /DAppVersion=${{ needs.validate.outputs.version }} `
-            /DPayloadDir=${{ github.workspace }}\publish\desktop `
-            /DOutputDir=${{ github.workspace }}\dist `
-            Packaging\windows\WPR.iss
-          Get-ChildItem dist
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: windows-installer
-          path: dist/WPR-Setup-*.exe
-          if-no-files-found: error
-
-  # -------------------------------------------------------------------------
   # Android: signed APK. Runs on Linux - faster, and the Android SDK is
-  # preinstalled. Switch runs-on to windows-latest if the Linux leg ever
-  # diverges from the local build.
+  # preinstalled.
   # -------------------------------------------------------------------------
   android:
     needs: validate
@@ -248,7 +165,7 @@ jobs:
   # build and just grab the workflow artifacts.
   # -------------------------------------------------------------------------
   release:
-    needs: [validate, windows, android]
+    needs: [validate, android]
     if: ${{ inputs.publish_release }}
     runs-on: ubuntu-latest
     steps:
@@ -353,7 +270,6 @@ jobs:
           {
             printf 'Prebuilt WPR %s.\n\n' "$VERSION"
             printf '| Download | Platform |\n| --- | --- |\n'
-            printf '| `WPR-Setup-%s.exe` | Windows x64 — self-contained, no .NET install required |\n' "$VERSION"
             printf '| `WPR-%s.apk` | Android — API 21+, arm64-v8a / x86_64 |\n\n' "$VERSION"
             printf "## What's changed\n\n%s\n\n" "$COMPARE"
             if [[ -f "$HIGHLIGHTS" ]]; then

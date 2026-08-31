@@ -61,7 +61,7 @@ namespace WPR.Platform.Android.Native
             string stagedPath = Path.Combine(stagingDir, SanitizeFileName(displayName));
 
             WpProgressDialog progress = WpProgressDialog.Show(
-                host, StripExtension(displayName), "copying to local storage…", indeterminate: true);
+                host, StripExtension(displayName), "正在复制到本地存储…", indeterminate: true);
 
             try
             {
@@ -74,11 +74,11 @@ namespace WPR.Platform.Android.Native
                 {
                     progress.Dismiss();
                     WpDialogs.Error(host, WPR.Platform.Android.Properties.Resources.InstallationFailed,
-                        "Could not read the selected file. Pick it again from a location the app can open.");
+                        "无法读取所选文件。请从应用可访问的位置重新选择。");
                     return false;
                 }
 
-                progress.SetStage("reading manifest…");
+                progress.SetStage("正在读取清单…");
 
                 ApplicationPreview? preview;
                 using (FileStream previewStream = new FileStream(stagedPath, FileMode.Open, FileAccess.Read, FileShare.Read))
@@ -94,7 +94,7 @@ namespace WPR.Platform.Android.Native
                     return false;
                 }
 
-                progress.SetStage("installing…");
+                progress.SetStage("正在安装…");
                 progress.SetProgress(0);
 
                 ApplicationInstallError error;

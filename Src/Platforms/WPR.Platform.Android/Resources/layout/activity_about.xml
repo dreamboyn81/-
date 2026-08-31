@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="26dp"
-        android:text="about" />
+        android:text="关于" />
 
     <TextView
         android:id="@+id/aboutVersion"
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="CREDITS" />
+        android:text="鸣谢" />
 
     <TextView
         style="@style/WpBody"
@@ -66,21 +66,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="LICENSE" />
+        android:text="汉化" />
 
     <TextView
         style="@style/WpBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="MIT" />
+        android:text="dreamboyn81" />
 
     <TextView
         style="@style/WpSectionHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="SHELL" />
+        android:text="界面" />
 
     <TextView
         android:id="@+id/aboutShell"
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:lineSpacingExtra="4dp"
-        android:text="native Android views throughout the launcher. games are hosted by FNA over SDL in their own process." />
+        android:text="启动器整体使用原生安卓视图。游戏通过 FNA/SDL 在独立进程中运行。" />
 
   </LinearLayout>
 </ScrollView>

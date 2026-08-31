@@ -51,7 +51,7 @@ namespace WPR.Platform.Android.Native
             }
 
             WpProgressDialog progress = WpProgressDialog.Show(
-                host, app.Name ?? "game", WPR.Platform.Android.Properties.Resources.LaunchingInProcess, indeterminate: true);
+                host, app.Name ?? "游戏", WPR.Platform.Android.Properties.Resources.LaunchingInProcess, indeterminate: true);
 
             Task.Run(() =>
             {
@@ -59,7 +59,7 @@ namespace WPR.Platform.Android.Native
                 {
                     if (app.PatchedVersion < ApplicationPatcher.Version)
                     {
-                        progress.SetStage("updating patched assemblies…");
+                        progress.SetStage("正在更新补丁程序集…");
                         WprStartup.SetupDllPatchForCecil(host);
 
                         var patcher = new ApplicationPatcher();
@@ -125,7 +125,7 @@ namespace WPR.Platform.Android.Native
             string? errorText = data?.GetStringExtra(GameActivity.ErrorDataName);
             if (string.IsNullOrWhiteSpace(errorText))
             {
-                errorText = "The game process exited unexpectedly (native crash or force-close). Check logcat for details.";
+                errorText = "游戏进程意外退出（原生崩溃或被强制关闭）。请查看日志了解详情。";
             }
 
             Log.Error(LogCategory.AppList, $"Game run error: {errorText}");
@@ -228,7 +228,7 @@ namespace WPR.Platform.Android.Native
                 new AlertDialog.Builder(host)!
                     .SetTitle(WPR.Platform.Android.Properties.Resources.AppRunError)!
                     .SetMessage(message)!
-                    .SetPositiveButton("OK", (IDialogInterfaceOnClickListener?)null)!
+                    .SetPositiveButton("确定", (IDialogInterfaceOnClickListener?)null)!
                     .Show();
             });
         }

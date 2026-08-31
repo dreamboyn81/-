@@ -27,7 +27,7 @@ namespace WPR.Platform.Android.Native
 
             // Read the version off the installed package rather than hardcoding it, so the
             // page cannot drift from what the csproj actually shipped.
-            string version = "unknown";
+            string version = "未知";
             try
             {
                 PackageInfo? info = PackageManager?.GetPackageInfo(PackageName!, 0);
@@ -35,7 +35,7 @@ namespace WPR.Platform.Android.Native
             }
             catch (Exception ex)
             {
-                global::Android.Util.Log.Warn("WPR", $"Could not read package version: {ex.Message}");
+                global::Android.Util.Log.Warn("WPR", $"无法读取应用包版本。: {ex.Message}");
             }
 
             string release = Build.VERSION.Release ?? "?";
@@ -44,7 +44,7 @@ namespace WPR.Platform.Android.Native
 
             FindViewById<TextView>(Resource.Id.aboutVersion)!.Text = $"WPR {version}";
             FindViewById<TextView>(Resource.Id.aboutBuild)!.Text =
-                $"DEVELOPER EDITION  ·  android {release} (API {api})  ·  {model}";
+                $"开发者版  ·  android {release} (API {api})  ·  {model}";
         }
     }
 }

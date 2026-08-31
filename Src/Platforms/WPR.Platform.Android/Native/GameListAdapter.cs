@@ -25,7 +25,7 @@ namespace WPR.Platform.Android.Native
             // resource reference ("@AppResLib.dll,-100") or an internal codename there.
             Name = HardcodedAchievementCatalogue.GameName(model.ProductId ?? "")
                    ?? (string.IsNullOrWhiteSpace(model.Name) ? model.ProductId : model.Name)
-                   ?? "unknown";
+                   ?? "未知";
 
             string type = model.ApplicationType.ToString().ToLowerInvariant();
             Subtitle = string.IsNullOrWhiteSpace(model.Version) ? type : $"{type}  ·  {model.Version}";

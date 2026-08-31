@@ -70,7 +70,7 @@ namespace WPR.Platform.Android.Native
 
         private void LoadGameRollup()
         {
-            FindViewById<TextView>(Resource.Id.pageTitle)!.Text = "achievements";
+            FindViewById<TextView>(Resource.Id.pageTitle)!.Text = "成就";
 
             List<AchievementGameEntry> entries = new List<AchievementGameEntry>();
             try
@@ -103,7 +103,7 @@ namespace WPR.Platform.Android.Native
 
             int earned = entries.Sum(entry => entry.Earned);
             int score = entries.Sum(entry => entry.EarnedScore);
-            _Subtitle.Text = $"{earned} EARNED  ·  {score} G";
+            _Subtitle.Text = $"{earned} 已达成  ·  {score} G";
             _Subtitle.Visibility = entries.Count == 0 ? ViewStates.Gone : ViewStates.Visible;
 
             AchievementGameAdapter adapter = new AchievementGameAdapter(this);
@@ -120,14 +120,14 @@ namespace WPR.Platform.Android.Native
             };
 
             ShowEmptyIfNeeded(entries.Count,
-                "no achievements yet. install a game with a catalogue and its achievements appear here, locked, before you have earned any.");
+                "暂无成就。安装带有目录的游戏后，成就将在此处显示（解锁前为锁定状态）。");
         }
 
         private void LoadGameDetail(string productId)
         {
             string title = Intent?.GetStringExtra(ExtraGameName)
                            ?? HardcodedAchievementCatalogue.GameName(productId)
-                           ?? "achievements";
+                           ?? "成就";
 
             FindViewById<TextView>(Resource.Id.pageTitle)!.Text = title.ToLowerInvariant();
 
@@ -159,7 +159,7 @@ namespace WPR.Platform.Android.Native
             adapter.SetItems(achievements);
             _List.Adapter = adapter;
 
-            ShowEmptyIfNeeded(achievements.Count, "this game has no achievement catalogue yet.");
+            ShowEmptyIfNeeded(achievements.Count, "此游戏暂无成就目录。");
         }
 
         private Dictionary<string, WPR.Models.Application> LoadApplicationsByProduct()

@@ -147,9 +147,9 @@ namespace WPR.Platform.Android.Native
             // the row still shows the gamerscore so the total adds up.
             bool hidden = !achievement.IsEarned && !achievement.DisplayBeforeEarned;
 
-            name.Text = hidden ? "hidden achievement" : achievement.Name;
+            name.Text = hidden ? "隐藏成就" : achievement.Name;
             description.Text = hidden
-                ? "revealed when you earn it"
+                ? "获得后揭晓"
                 : (string.IsNullOrWhiteSpace(achievement.Description) ? achievement.HowToEarn : achievement.Description);
             score.Text = $"{achievement.GamerScore} G";
 

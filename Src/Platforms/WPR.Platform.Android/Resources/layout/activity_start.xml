@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="22dp"
-        android:text="start" />
+        android:text="开始" />
 
     <!-- Row 1: wide "games" tile -->
     <FrameLayout
@@ -71,7 +71,7 @@
           android:fontFamily="sans-serif"
           android:textColor="@color/wp_foreground"
           android:textSize="17sp"
-          android:text="games" />
+          android:text="游戏" />
     </FrameLayout>
 
     <!-- Row 2 -->
@@ -96,7 +96,7 @@
             android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:layout_gravity="bottom|start" android:layout_margin="12dp"
             android:fontFamily="sans-serif" android:textColor="@color/wp_foreground"
-            android:textSize="17sp" android:text="add game" />
+            android:textSize="17sp" android:text="添加游戏" />
       </FrameLayout>
 
       <View android:layout_width="@dimen/wp_tile_gap" android:layout_height="1dp" />
@@ -122,7 +122,7 @@
             android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:layout_gravity="bottom|start" android:layout_margin="12dp"
             android:fontFamily="sans-serif" android:textColor="@color/wp_foreground"
-            android:textSize="17sp" android:text="achievements" />
+            android:textSize="17sp" android:text="成就" />
       </FrameLayout>
     </LinearLayout>
 
@@ -148,7 +148,7 @@
             android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:layout_gravity="bottom|start" android:layout_margin="12dp"
             android:fontFamily="sans-serif" android:textColor="@color/wp_foreground"
-            android:textSize="17sp" android:text="settings" />
+            android:textSize="17sp" android:text="设置" />
       </FrameLayout>
 
       <View android:layout_width="@dimen/wp_tile_gap" android:layout_height="1dp" />
@@ -168,7 +168,7 @@
             android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:layout_gravity="bottom|start" android:layout_margin="12dp"
             android:fontFamily="sans-serif" android:textColor="@color/wp_foreground"
-            android:textSize="17sp" android:text="about" />
+            android:textSize="17sp" android:text="关于" />
       </FrameLayout>
     </LinearLayout>
 

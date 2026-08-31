@@ -25,7 +25,7 @@
       android:fontFamily="sans-serif"
       android:textColor="@color/wp_subtle"
       android:textSize="13sp"
-      android:text="preparing…" />
+      android:text="正在准备…" />
 
   <ProgressBar
       android:id="@+id/installProgress"

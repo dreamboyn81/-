@@ -121,28 +121,28 @@
     <value>The installation has been canceled!</value>
   </data>
   <data name="ApplicationInstallError_InvalidManifestFiles" xml:space="preserve">
-    <value>The application package contains invalid manifest files!</value>
+    <value>应用包包含无效的清单文件！</value>
   </data>
   <data name="ApplicationInstallError_MissingManifestFiles" xml:space="preserve">
     <value>The application package is missing manifest files!</value>
   </data>
   <data name="ApplicationInstallError_ModernNativeUnsupported" xml:space="preserve">
-    <value>This is a Windows Phone 8 "Modern Native" app — native ARM/C++ code built against WinRT. WPR can only run managed WP7 XNA and Silverlight titles, so this package cannot be installed or run. If a WP7 (XNA/Silverlight) version of this game exists, use that instead.</value>
+    <value>这是 Windows Phone 8 “现代原生”应用 - 基于 WinRT 构建的原生 ARM/C++ 代码。WPR 只能运行托管的 WP7 XNA 和 Silverlight 应用，因此无法安装或运行此包。如果存在此游戏的 WP7（XNA/Silverlight）版本，请改用该版本。</value>
   </data>
   <data name="ApplicationInstallError_None" xml:space="preserve">
     <value>The application has been successfully installed!</value>
   </data>
   <data name="ApplicationInstallError_NotDecrypted" xml:space="preserve">
-    <value>The application package is not in decrypted format!</value>
+    <value>应用包不是已解密格式！</value>
   </data>
   <data name="ApplicationInstallError_NotSupportedAppType" xml:space="preserve">
-    <value>The application type is currently not yet supported!</value>
+    <value>当前不支持该应用类型！</value>
   </data>
   <data name="ApplicationInstallError_UnexpectedError" xml:space="preserve">
-    <value>An unexpected error occured during the installation.&amp;#13;&amp;#13;Please check the log for more info.</value>
+    <value>安装过程中发生意外错误。&amp;#13;&amp;#13;请查看日志了解详情。</value>
   </data>
   <data name="InstallationFailed" xml:space="preserve">
-    <value>Installation failed</value>
+    <value>安装失败</value>
   </data>
   <data name="InstallationSucceed" xml:space="preserve">
     <value>Installation succeed</value>
@@ -169,7 +169,7 @@
     <value>The application {0} has already been installed. Do you want to delete the existing application and install this package?</value>
   </data>
   <data name="AppRunError" xml:space="preserve">
-    <value>Error executing application</value>
+    <value>应用程序执行错误</value>
   </data>
   <data name="BrowsePath" xml:space="preserve">
     <value>Browse</value>

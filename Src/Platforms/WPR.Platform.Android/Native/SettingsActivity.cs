@@ -45,7 +45,7 @@ namespace WPR.Platform.Android.Native
             _GamerTag.Text = Configuration.Current?.GamerTag ?? "";
 
             FindViewById<TextView>(Resource.Id.storagePathText)!.Text =
-                Configuration.Current?.DataStorePath ?? "(not initialised)";
+                Configuration.Current?.DataStorePath ?? "(未初始化)";
 
             BuildAccentGrid();
         }
