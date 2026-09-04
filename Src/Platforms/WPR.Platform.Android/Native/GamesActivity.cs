@@ -226,7 +226,7 @@ namespace WPR.Platform.Android.Native
             bool confirmed = await WpDialogs.ConfirmAsync(
                 this,
                 "卸载",
-                $"确定要移除 {entry.Name} 及其在此设备上保存的所有数据吗？");
+                $"你确定要卸载 {entry.Name} 并删除它在本机上的所有数据吗？");
 
             if (!confirmed) return;
 

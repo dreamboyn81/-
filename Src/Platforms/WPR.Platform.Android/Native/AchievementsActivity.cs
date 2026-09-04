@@ -120,7 +120,7 @@ namespace WPR.Platform.Android.Native
             };
 
             ShowEmptyIfNeeded(entries.Count,
-                "暂无成就。安装带有目录的游戏后，成就将在此处显示（解锁前为锁定状态）。");
+                "暂无成就。安装带有目录的游戏后，成就将在这里显示（解锁前为锁定状态）。");
         }
 
         private void LoadGameDetail(string productId)

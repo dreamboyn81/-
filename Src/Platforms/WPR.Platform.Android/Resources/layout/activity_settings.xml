@@ -53,7 +53,7 @@
         android:textColorHint="@color/wp_disabled"
         android:textSize="18sp"
         android:fontFamily="sans-serif"
-        android:hint="Player" />
+        android:hint="玩家" />
 
     <TextView
         style="@style/WpSectionHeader"
@@ -103,7 +103,7 @@
         android:textColor="@color/wp_subtle"
         android:textSize="13sp"
         android:lineSpacingExtra="3dp"
-        android:text="游戏通过你选择的 .xap 文件安装在此处。设备上的任何文件夹都不会被自动扫描。" />
+        android:text="你所安装的游戏和数据都存放在这里。" />
 
   </LinearLayout>
 </ScrollView>
