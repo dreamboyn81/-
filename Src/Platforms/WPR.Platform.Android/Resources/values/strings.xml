@@ -11,5 +11,5 @@
        how it has always rendered here and WpAppTitle does not set the attribute — the
        tracking in that style is tuned against caps. Matches the name in README.md and
        the desktop head's Start Menu entry (Program.cs, WindowsAppDisplayName). -->
-  <string name="app_title">WINDOWS PHONE RUNNER</string>
+  <string name="app_title">WINDOWS PHONE 模拟器</string>
 </resources>
